@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Morse Code Practice Card</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div class="viewport">
+      <article class="practice-card" aria-label="モールス信号練習カード">
+        <header class="card-head">
+          <div class="card-head-titles">
+            <h1 class="card-headline">MORSE CODE</h1>
+          </div>
+        </header>
+        <div id="diagram-mount" class="diagram-mount"></div>
+        <div class="card-actions">
+          <button
+            type="button"
+            id="main-btn"
+            class="push-btn"
+            aria-label="Morse input: short press = dit, long press = dah"
+          >
+            Input
+          </button>
+        </div>
+      </article>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

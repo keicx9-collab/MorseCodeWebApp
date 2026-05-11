@@ -1,0 +1,285 @@
+{
+  "version": "1.0",
+  "nodes": [
+    {
+      "id": "root",
+      "label": "Antenna",
+      "type": "ROOT",
+      "dot_id": "d",
+      "dash_id": "h"
+    },
+    {
+      "id": "h",
+      "label": "T",
+      "type": "RECT",
+      "dot_id": "hd",
+      "dash_id": "hh"
+    },
+    {
+      "id": "hh",
+      "label": "M",
+      "type": "RECT",
+      "dot_id": "hhd",
+      "dash_id": "hhh"
+    },
+    {
+      "id": "hhh",
+      "label": "O",
+      "type": "RECT",
+      "dot_id": "hhhd",
+      "dash_id": "hhhh"
+    },
+    {
+      "id": "hhhh",
+      "label": "",
+      "type": "RECT",
+      "dot_id": "hhhhd",
+      "dash_id": "hhhhh"
+    },
+    {
+      "id": "hhhhh",
+      "label": "0",
+      "type": "RECT",
+      "dot_id": null,
+      "dash_id": null
+    },
+    {
+      "id": "d",
+      "label": "E",
+      "type": "ROUND",
+      "dot_id": "dd",
+      "dash_id": "dh"
+    },
+    {
+      "id": "dh",
+      "label": "A",
+      "type": "RECT",
+      "dot_id": "dhd",
+      "dash_id": "dhh"
+    },
+    {
+      "id": "dhh",
+      "label": "W",
+      "type": "RECT",
+      "dot_id": "dhhd",
+      "dash_id": "dhhh"
+    },
+    {
+      "id": "dhhh",
+      "label": "J",
+      "type": "RECT",
+      "dot_id": null,
+      "dash_id": "dhhhh"
+    },
+    {
+      "id": "dhhhh",
+      "label": "1",
+      "type": "RECT",
+      "dot_id": null,
+      "dash_id": null
+    },
+    {
+      "id": "dd",
+      "label": "I",
+      "type": "ROUND",
+      "dot_id": "ddd",
+      "dash_id": "ddh"
+    },
+    {
+      "id": "ddh",
+      "label": "U",
+      "type": "RECT",
+      "dot_id": "ddhd",
+      "dash_id": "ddhh"
+    },
+    {
+      "id": "ddhh",
+      "label": "",
+      "type": "RECT",
+      "dot_id": null,
+      "dash_id": "ddhhh"
+    },
+    {
+      "id": "ddhhh",
+      "label": "2",
+      "type": "RECT",
+      "dot_id": null,
+      "dash_id": null
+    },
+    {
+      "id": "ddd",
+      "label": "S",
+      "type": "ROUND",
+      "dot_id": "dddd",
+      "dash_id": "dddh"
+    },
+    {
+      "id": "dddh",
+      "label": "V",
+      "type": "RECT",
+      "dot_id": null,
+      "dash_id": "dddhh"
+    },
+    {
+      "id": "dddhh",
+      "label": "3",
+      "type": "RECT",
+      "dot_id": null,
+      "dash_id": null
+    },
+    {
+      "id": "dddd",
+      "label": "H",
+      "type": "ROUND",
+      "dot_id": "ddddd",
+      "dash_id": "ddddh"
+    },
+    {
+      "id": "ddddh",
+      "label": "4",
+      "type": "RECT",
+      "dot_id": null,
+      "dash_id": null
+    },
+    {
+      "id": "ddddd",
+      "label": "5",
+      "type": "ROUND",
+      "dot_id": null,
+      "dash_id": null
+    },
+    {
+      "id": "hd",
+      "label": "N",
+      "type": "ROUND",
+      "dot_id": "hdd",
+      "dash_id": "hdh"
+    },
+    {
+      "id": "hdd",
+      "label": "D",
+      "type": "ROUND",
+      "dot_id": "hddd",
+      "dash_id": "hddh"
+    },
+    {
+      "id": "hddd",
+      "label": "B",
+      "type": "ROUND",
+      "dot_id": "hdddd",
+      "dash_id": null
+    },
+    {
+      "id": "hdddd",
+      "label": "6",
+      "type": "ROUND",
+      "dot_id": null,
+      "dash_id": null
+    },
+    {
+      "id": "hhd",
+      "label": "G",
+      "type": "ROUND",
+      "dot_id": "hhdd",
+      "dash_id": "hhdh"
+    },
+    {
+      "id": "hhdd",
+      "label": "Z",
+      "type": "ROUND",
+      "dot_id": "hhddd",
+      "dash_id": null
+    },
+    {
+      "id": "hhddd",
+      "label": "7",
+      "type": "ROUND",
+      "dot_id": null,
+      "dash_id": null
+    },
+    {
+      "id": "hhhd",
+      "label": "",
+      "type": "ROUND",
+      "dot_id": "hhhdd",
+      "dash_id": null
+    },
+    {
+      "id": "hhhdd",
+      "label": "8",
+      "type": "ROUND",
+      "dot_id": null,
+      "dash_id": null
+    },
+    {
+      "id": "hhhhd",
+      "label": "9",
+      "type": "ROUND",
+      "dot_id": null,
+      "dash_id": null
+    },
+    {
+      "id": "hdh",
+      "label": "K",
+      "type": "RECT",
+      "dot_id": "hdhd",
+      "dash_id": "hdhh"
+    },
+    {
+      "id": "hdhd",
+      "label": "C",
+      "type": "ROUND",
+      "dot_id": null,
+      "dash_id": null
+    },
+    {
+      "id": "ddhd",
+      "label": "F",
+      "type": "ROUND",
+      "dot_id": null,
+      "dash_id": null
+    },
+    {
+      "id": "dhd",
+      "label": "R",
+      "type": "ROUND",
+      "dot_id": "dhdd",
+      "dash_id": null
+    },
+    {
+      "id": "dhdd",
+      "label": "L",
+      "type": "ROUND",
+      "dot_id": null,
+      "dash_id": null
+    },
+    {
+      "id": "dhhd",
+      "label": "P",
+      "type": "ROUND",
+      "dot_id": null,
+      "dash_id": null
+    },
+    {
+      "id": "hhdh",
+      "label": "Q",
+      "type": "RECT",
+      "dot_id": null,
+      "dash_id": null
+    },
+    {
+      "id": "hddh",
+      "label": "X",
+      "type": "RECT",
+      "dot_id": null,
+      "dash_id": null
+    },
+    {
+      "id": "hdhh",
+      "label": "Y",
+      "type": "RECT",
+      "dot_id": null,
+      "dash_id": null
+    }
+  ]
+}
