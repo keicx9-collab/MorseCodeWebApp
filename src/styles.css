@@ -1,0 +1,291 @@
+:root {
+  --page-bg: #050606;
+  --card-face: #0b0c0b;
+  --pcb-line: rgba(248, 248, 248, 0.92);
+  --pcb-letter: #ffffff;
+  --diagram-label: #ffffff;
+  --pcb-node-fill: rgba(18, 92, 56, 0.5);
+  --pcb-node-stroke: rgba(255, 255, 255, 0.88);
+  --card-rim: rgba(230, 230, 230, 0.82);
+  --card-rim-soft: rgba(200, 200, 200, 0.22);
+  /* config.ts の LED 色 — main で再同期 */
+  --led-active-fill: #ff9100;
+  --led-active-stroke: #fffef8;
+  --node-dim-opacity: 0.42;
+  /* White crosshair with dark halo — visible on dark UI (fallback: crosshair). */
+  --app-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 5v22M5 16h22' stroke='%23000' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M16 5v22M5 16h22' stroke='%23f5f5f5' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E")
+      16 16,
+    crosshair;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--page-bg);
+  color: var(--pcb-letter);
+  cursor: var(--app-cursor);
+}
+
+.viewport {
+  box-sizing: border-box;
+  height: 100%;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: max(16px, env(safe-area-inset-top, 0)) max(18px, env(safe-area-inset-right, 0))
+    max(20px, env(safe-area-inset-bottom, 0)) max(18px, env(safe-area-inset-left, 0));
+}
+
+.practice-card {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--card-face);
+  border-radius: 20px;
+  border: 1px solid var(--card-rim);
+  box-shadow:
+    0 0 0 1px var(--card-rim-soft) inset,
+    0 18px 42px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+}
+
+.card-head {
+  flex-shrink: 0;
+  padding: 18px 18px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card-head-titles {
+  width: 100%;
+  max-width: 24rem;
+  margin-inline: auto;
+}
+
+.card-headline {
+  margin: 0;
+  font-size: clamp(1.28rem, 2.8vw + 0.85rem, 2.35rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pcb-letter);
+  line-height: 1.25;
+}
+
+@media (min-width: 768px) {
+  .card-headline {
+    font-size: clamp(1.65rem, 2.4vw + 1rem, 2.75rem);
+  }
+}
+
+.diagram-mount {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  padding: 6px 10px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+  overflow: hidden;
+}
+
+.diagram-stack {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  display: grid;
+  grid-template: 1fr / 1fr;
+  place-items: stretch;
+  align-self: stretch;
+}
+
+.diagram-stack > svg {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  display: block;
+  overflow: visible;
+}
+
+.pcb-layer--edges {
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pcb-layer--nodes {
+  z-index: 2;
+}
+.card-actions {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  padding: 10px 16px 18px;
+}
+
+.push-btn {
+  appearance: none;
+  min-height: 48px;
+  min-width: 168px;
+  padding: 0.7rem 2.1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+  background: linear-gradient(180deg, #2d5242 0%, #1e3d30 18%, #152e25 78%, #0f221a 100%);
+  color: var(--pcb-letter);
+  font-family: inherit;
+  font-size: clamp(1.05rem, 2.6vw + 0.55rem, 1.28rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-indent: 0.12em;
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.2) inset,
+    0 -3px 6px rgba(0, 0, 0, 0.35) inset,
+    0 6px 12px rgba(0, 0, 0, 0.45),
+    0 10px 26px rgba(0, 0, 0, 0.28);
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  transition:
+    background 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease,
+    border-color 0.15s ease;
+}
+
+@media (hover: hover) {
+  .push-btn:hover {
+    background: linear-gradient(180deg, #447560 0%, #2f5544 18%, #234236 78%, #1a3028 100%);
+    border-color: rgba(255, 255, 255, 0.42);
+    box-shadow:
+      0 2px 0 rgba(255, 255, 255, 0.3) inset,
+      0 -3px 6px rgba(0, 0, 0, 0.28) inset,
+      0 8px 16px rgba(0, 0, 0, 0.38),
+      0 12px 32px rgba(255, 160, 80, 0.22);
+  }
+}
+
+@media (min-width: 768px) {
+  .push-btn {
+    min-height: 52px;
+    min-width: 192px;
+    padding: 0.75rem 2.35rem;
+    font-size: clamp(1.18rem, 1.8vw + 0.65rem, 1.52rem);
+  }
+}
+
+.push-btn:active {
+  transform: translateY(2px);
+  filter: brightness(1.03);
+  box-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.35) inset,
+    0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+.pcb-edge {
+  fill: none;
+  stroke: var(--pcb-line);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+svg.pcb-layer--nodes path.pcb-root {
+  fill: var(--pcb-node-fill) !important;
+  fill-opacity: 0.58 !important;
+  stroke: var(--pcb-node-stroke) !important;
+  stroke-width: 2.25 !important;
+}
+
+svg.pcb-layer--nodes path.pcb-dot {
+  fill: var(--pcb-node-fill) !important;
+  fill-opacity: 0.58 !important;
+  stroke: var(--pcb-node-stroke) !important;
+  stroke-width: 2.2 !important;
+}
+
+svg.pcb-layer--nodes path.pcb-dash {
+  fill: var(--pcb-node-fill) !important;
+  fill-opacity: 0.58 !important;
+  stroke: var(--pcb-node-stroke) !important;
+  stroke-width: 2.2 !important;
+}
+
+svg.pcb-layer--nodes g.pcb-node--dim {
+  opacity: 1;
+}
+
+svg.pcb-layer--nodes g.pcb-node--dim > path.pcb-root,
+svg.pcb-layer--nodes g.pcb-node--dim > path.pcb-dot,
+svg.pcb-layer--nodes g.pcb-node--dim > path.pcb-dash {
+  opacity: var(--node-dim-opacity);
+}
+
+svg.pcb-layer--nodes g.pcb-node--dim .pcb-antenna-line,
+svg.pcb-layer--nodes g.pcb-node--dim .pcb-antenna-arc {
+  opacity: var(--node-dim-opacity);
+}
+
+svg.pcb-layer--nodes g.pcb-node--lit {
+  opacity: 1;
+}
+
+svg.pcb-layer--nodes g.pcb-node--lit > path.pcb-root,
+svg.pcb-layer--nodes g.pcb-node--lit > path.pcb-dot,
+svg.pcb-layer--nodes g.pcb-node--lit > path.pcb-dash {
+  opacity: 1;
+  fill: var(--led-active-fill) !important;
+  fill-opacity: 1 !important;
+  stroke: var(--led-active-stroke) !important;
+  stroke-width: 4.25 !important;
+  filter: drop-shadow(0 0 5px rgba(255, 145, 0, 1)) drop-shadow(0 0 12px rgba(255, 100, 0, 0.75));
+}
+
+.pcb-node--lit .pcb-letter {
+  fill: #ffffff;
+}
+
+.pcb-antenna-line,
+.pcb-antenna-arc {
+  stroke: var(--pcb-line);
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.pcb-letter {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  fill: #ffffff;
+  paint-order: stroke fill;
+  stroke: rgba(5, 12, 10, 0.92);
+  stroke-width: 1.05px;
+  pointer-events: none;
+}
+
